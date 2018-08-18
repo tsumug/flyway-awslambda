@@ -10,18 +10,19 @@ lazy val flywayAwsLambda = (project in file(".")).settings(
 
   libraryDependencies ++= Seq(
     // Flyway
-    "org.flywaydb" % "flyway-core" % "4.0.3",
-    "mysql" % "mysql-connector-java" % "6.0.5", // Flyway supports only Ver.6 higher.
+    "org.flywaydb" % "flyway-core" % "5.1.4",
+    "mysql" % "mysql-connector-java" % "8.0.12", // Flyway supports only Ver.6 higher.
+    "org.postgresql" % "postgresql" % "42.2.4",
 
     // AWS
-    "com.amazonaws" % "aws-lambda-java-core" % "1.1.0",
-    "com.amazonaws" % "aws-lambda-java-events" % "1.3.0",
-    "com.amazonaws" % "aws-java-sdk-s3" % "1.11.53",
+    "com.amazonaws" % "aws-lambda-java-core" % "1.2.0",
+    "com.amazonaws" % "aws-lambda-java-events" % "2.2.2",
+    "com.amazonaws" % "aws-java-sdk-s3" % "1.11.390",
 
     // Json
-    "io.spray" %%  "spray-json" % "1.3.2",
+    "io.spray" %%  "spray-json" % "1.3.4",
 
     // Test
-    "org.scalatest" %% "scalatest" % "3.0.0" % Test
+    "org.scalatest" %% "scalatest" % "3.0.5" % Test
   )
 )
