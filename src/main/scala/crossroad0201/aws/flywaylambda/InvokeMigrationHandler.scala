@@ -33,7 +33,15 @@ class InvokeMigrationHandler extends RequestStreamHandler with S3MigrationHandle
             case _ => (b, p, "flyway.conf")
           }
         }
-        case _ => throw new IllegalArgumentException(s"Missing require key [bucketName, prefix]. - $json")
+        case _ => {
+          val b = sys.env("BUCKET_NAME")
+          val p = sys.env("PREFIX")
+          if (b.isEmpty || p.isEmpty) {
+            throw new IllegalArgumentException(s"Missing require key [bucketName, prefix]. - $json")
+          } else {
+            (b, p, "flyway.conf")
+          }
+        }
       }
     }
 
