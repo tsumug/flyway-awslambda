@@ -34,8 +34,8 @@ class InvokeMigrationHandler extends RequestStreamHandler with S3MigrationHandle
           }
         }
         case _ => {
-          val b = sys.env("BUCKET_NAME")
-          val p = sys.env("PREFIX")
+          val b = sys.env.getOrElse("BUCKET_NAME","")
+          val p = sys.env.getOrElse("PREFIX","")
           if (b.isEmpty || p.isEmpty) {
             throw new IllegalArgumentException(s"Missing require key [bucketName, prefix]. - $json")
           } else {
